@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAuthn Demo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <nav>
+            <div class="nav-container">
+                <h1>WebAuthn Demo</h1>
+                <div class="nav-buttons">
+                    <button id="showRegister" class="btn btn-outline">Register</button>
+                    <button id="showLogin" class="btn btn-solid">Login</button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="main-container">
+            <!-- Authentication Forms Container -->
+            <main>
+                <!-- Register Form -->
+                <div id="registerForm" class="auth-form">
+                    <h2>Create Account</h2>
+                    <p class="subtitle">Register with your biometric authenticator</p>
+                    
+                    <div id="registerMessage" class="message hidden"></div>
+                    
+                    <form id="registerFormElement">
+                        <div class="form-group">
+                            <label for="registerUsername">Username</label>
+                            <input 
+                                type="text" 
+                                id="registerUsername" 
+                                placeholder="Enter your username"
+                                required
+                            >
+                        </div>
+                        <button type="submit" class="btn btn-solid btn-full">
+                            Register with WebAuthn
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Login Form -->
+                <div id="loginForm" class="auth-form hidden">
+                    <h2>Welcome Back</h2>
+                    <p class="subtitle">Login with your biometric authenticator</p>
+                    
+                    <div id="loginMessage" class="message hidden"></div>
+                    
+                    <form id="loginFormElement">
+                        <div class="form-group">
+                            <label for="loginUsername">Username</label>
+                            <input 
+                                type="text" 
+                                id="loginUsername" 
+                                placeholder="Enter your username"
+                                required
+                            >
+                        </div>
+                        <button type="submit" class="btn btn-solid btn-full">
+                            Login with WebAuthn
+                        </button>
+                    </form>
+                </div>
+            </main>
+
+            <!-- Developer Console -->
+            <div class="dev-console">
+                <div class="dev-console-header">
+                    <h2>Developer Console</h2>
+                    <div class="log-types">
+                        <div class="log-type">
+                            <span class="dot success"></span>
+                            <span>Success</span>
+                        </div>
+                        <div class="log-type">
+                            <span class="dot error"></span>
+                            <span>Error</span>
+                        </div>
+                        <div class="log-type">
+                            <span class="dot info"></span>
+                            <span>Info</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="logContainer" class="dev-console-content">
+                    <div class="empty-logs">No logs yet. Start by registering or logging in.</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            Secure authentication with WebAuthn
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json-formatter/0.7.0/json-formatter.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+    <script src="js/logger.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>
